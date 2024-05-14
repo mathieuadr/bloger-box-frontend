@@ -5,7 +5,9 @@ import { Observable } from "rxjs";
 
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class PostService{
     private PostUrl = `http://localhost:8082/v1/posts`;
     

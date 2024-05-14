@@ -4,6 +4,6 @@ export interface Post{
     id: String;
     title: String;
     content : string;
-    createdDate:Date;
+    date_creation:Date;
     category : Category;
 }

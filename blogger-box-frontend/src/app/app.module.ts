@@ -7,12 +7,14 @@ import { TopBarComponent } from './top-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './data/services/post.service';
 import { PostListComponent } from './post-list/post-list.component';
+import { PostListItemComponent } from './post-list-item/post-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    PostListComponent
+    PostListComponent,
+    PostListItemComponent
   ],
   imports: [
     BrowserModule,

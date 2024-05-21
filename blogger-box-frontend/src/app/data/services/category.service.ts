@@ -10,7 +10,7 @@ import { Category } from "../category";
     providedIn: 'root'
   })
 export class CategoryService{
-    private AllCatUrl = `${environment.apiUrl}v1/posts`;
+    private AllCatUrl = `${environment.apiUrl}v1/categories`;
 
     
     constructor(private http: HttpClient){}

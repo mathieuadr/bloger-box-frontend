@@ -1,7 +1,37 @@
-<div>
-    <form [formGroup]="Postform" class="needs-validation" autocomplete="off" ()>
-        <label for="titre">Titre</label>
-        <input type="texte" class="form-control" formControlName="Titre" placeholder="Entrez le titre" />
-        <input type="texte" class="form-control" formControlName="Content" placeholder="Entrez le contenu" />
-    </form>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="Postform" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="titre" class="form-label">Titre</label>
+                    <input type="text" class="form-control" formControlName="Titre" placeholder="Entrez le titre"
+                        id="titre">
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Catégorie</label>
+                    <select class="form-control" formControlName="Category" id="category">
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenu</label>
+                    <textarea class="form-control" formControlName="Content" placeholder="Entrez le contenu"
+                        id="content" style="height: 150px;"></textarea>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary">Publier</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
+<!--Punition Argent pas forcement impactantPar exemple, bien que les montants des amendes soient impressionnants,
+    le texte pourrait explorer si ces sanctions ont conduit à des changements significatifs dans les pratiques des entreprises 
+    ou si elles sont simplement vues comme un coût d'exploitation par de grandes multinationales.
+Cnil volume croissant de plaintes et tension entre national et européen-->

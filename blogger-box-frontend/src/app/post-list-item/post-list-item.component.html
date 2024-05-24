@@ -7,7 +7,7 @@
         <span class="badge rounded-pill text-bg-light">
             {{post.category.name}}
         </span>
-        <span>{{post.date_creation }}</span>
+        <span>{{post.date_creation | date: "medium" }}</span>
         </div>
         
         

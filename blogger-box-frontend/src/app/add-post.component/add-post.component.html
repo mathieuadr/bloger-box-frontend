@@ -1,37 +1,86 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form [formGroup]="Postform" class="needs-validation" novalidate>
+            <form [formGroup]="form" class="needs-validation" novalidate>
+
+
+
                 <div class="mb-3">
                     <label for="titre" class="form-label">Titre</label>
-                    <input type="text" class="form-control" formControlName="Titre" placeholder="Entrez le titre"
-                        id="titre">
+                    <input type="text" class="form-control" formControlName="title" placeholder="Entrez le titre"
+                        id="titre" [class.is-invalid]="title.invalid && title.touched"
+                        [class.is-valid]="title.valid && title.touched">
+                    <div *ngIf="title.invalid && title.touched" class="invalid-feedback -danger">
+                        <div *ngIf="title.errors?.['maxlength']">
+                            Content should be 150 characters or less
+                        </div>
+                        <div *ngIf="title.errors?.['minlength']">
+                            Content should be 5 characters or more
+                        </div>
+                        <div *ngIf="title.errors?.['required']">
+                            Required
+                        </div>
+                    </div>
                 </div>
+
+
+
 
                 <div class="mb-3">
                     <label for="category" class="form-label">Catégorie</label>
-                    <select class="form-control" formControlName="Category" id="category">
-                        <option value="" disabled selected>Choisissez une catégorie</option>
-                        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-                    </select>
+                    <div>
+                        <select id="category" class="form-control" formControlName="category" data-toggle="dropdown"
+                            [class.is-invalid]="category.invalid && category.touched"
+                            [class.is-valid]="category.valid && category.touched">
+                            <option value="">Choisissez une catégorie</option>
+                            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                        </select>
+                        <div *ngIf="category.invalid && category.touched" class="invalid-feedback text-danger">
+                            <div *ngIf="category.errors?.['required']">
+                                Required
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                
+
                 <div class="mb-3">
                     <label for="content" class="form-label">Contenu</label>
-                    <textarea class="form-control" formControlName="Content" placeholder="Entrez le contenu"
-                        id="content" style="height: 150px;"></textarea>
+                    <textarea class="form-control" placeholder="Entrez le contenu" id="content" style="height: 250px;"
+                        formControlName="content" [class.is-invalid]="content.invalid && content.touched"
+                        [class.is-valid]="content.valid && content.touched"></textarea>
+
+                    <div *ngIf="content.invalid && content.touched" class="invalid-feedback text-danger">
+                        <div *ngIf="content.errors?.['maxlength']">
+                            Content should be 2500 characters or less
+                        </div>
+                        <div *ngIf="content.errors?.['required']">
+                            Required
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4">
+                        <button type=”button” class="btn btn-danger mx-3" data-bs-dismiss=”modal” aria-label=”Close”
+                            [routerLink]="['/']"> Close</button>
+                        <button type="submit" class="btn btn-primary mx-3" (ngSubmit)="onSubmit()" >Publier
+                        </button>
+                        
+                    </div>
                 </div>
 
 
 
-                <button type="submit" class="btn btn-primary">Publier</button>
+
+
+
+
+
+
+
+
             </form>
         </div>
     </div>
 </div>
-
-
-<!--Punition Argent pas forcement impactantPar exemple, bien que les montants des amendes soient impressionnants,
-    le texte pourrait explorer si ces sanctions ont conduit à des changements significatifs dans les pratiques des entreprises 
-    ou si elles sont simplement vues comme un coût d'exploitation par de grandes multinationales.
-Cnil volume croissant de plaintes et tension entre national et européen-->

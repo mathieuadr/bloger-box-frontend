@@ -10,4 +10,5 @@ import { Category } from '../data/category';
 export class PostListItemComponent {
   @Input()
   post!:Post;
+  
 }

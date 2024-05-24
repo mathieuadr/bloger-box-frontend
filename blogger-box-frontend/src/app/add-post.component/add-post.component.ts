@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from '../data/category';
 import { CategoryService } from '../data/services/category.service';
+import { hasLowerCase, hasNumeric, hasUpperCase } from '../validator/text-validator';
+import { PostService } from '../data/services/post.service';
+
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
@@ -10,13 +13,33 @@ import { CategoryService } from '../data/services/category.service';
 export class AddPostComponent implements OnInit{
 
   categories : Category[]=[];
-  Postform=new FormGroup({
-    Titre:new FormControl(''),
-    Content:new FormControl(''),
-    Category: new FormControl('')
+  
+  form = this.fb.group({
+    title: [
+      '',
+      {
+        validators: [Validators.required,Validators.minLength(8),Validators.maxLength(150)
+        ],
+        updateOn: 'blur',
+      },
+    ],
+    category: [
+      '',
+      {validators:[
+        Validators.required,
+ 
+      ]},
+    ],
+    content: [
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(2500)
+      ],
+    ],
+  });
 
-  })
-  constructor(private CategoryService : CategoryService){
+  constructor(private CategoryService : CategoryService, private fb: FormBuilder,private PostService : PostService){
   }
   ngOnInit(): void {
     this.loadCategory();
@@ -28,7 +51,21 @@ export class AddPostComponent implements OnInit{
       console.error('Failed to load categories', error);
     });
   }
-  
 
+  get content(){
+    return this.form.controls['content']
+  }
+  
+  get category(){
+    return this.form.controls['category']
+  }
+  
+  get title(){
+    return this.form.controls['title']
+  }
+
+  onSubmit(){
+    
+  }
   
 }

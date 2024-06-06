@@ -10,6 +10,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostListItemComponent } from './post-list-item/post-list-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddPostComponent } from './add-post.component/add-post.component';
+import { CategoryService } from './data/services/category.service';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AddPostComponent } from './add-post.component/add-post.component';
     PostListComponent,
     PostListItemComponent,
     AddPostComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { AddPostComponent } from './add-post.component/add-post.component';
     ReactiveFormsModule
   ],
   providers: [
-    PostService
+    PostService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
   

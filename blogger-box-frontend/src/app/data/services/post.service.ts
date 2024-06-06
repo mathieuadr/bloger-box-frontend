@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Post } from "../post";
+import { Post, PostCreateInput } from "../post";
 import { Observable } from "rxjs";
 import { environment } from "../../environment/environment";
 
@@ -17,5 +17,8 @@ export class PostService{
         getAll(): Observable<Post[]> {
             return this.http.get<Post[]>(this.PostUrl);
             }
+        addPost(Post : PostCreateInput): Observable<Post>{
+          return this.http.post<Post>(this.PostUrl,Post)
+        }
 
     }

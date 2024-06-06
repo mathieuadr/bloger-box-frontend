@@ -1,10 +1,14 @@
-<div *ngIf="posts && posts.length">
-    <h2>Blog Posts</h2>
-    <div *ngFor="let post of posts">
-    <app-post-list-item [post]="post"></app-post-list-item>
+<div class="container mt-5">
+    <div *ngIf="posts && posts.length">
+        <h2 class="mb-4 text-light text-center">Blog Posts</h2>
+        <div class="row">
+            <div   *ngFor="let post of posts">
+                <app-post-list-item [post]="post" ></app-post-list-item>
+            </div>
+        </div>
     </div>
-</div>
 
-<div *ngIf="!posts || posts.length===0">
-    <p>No posts available.</p>
+    <div *ngIf="!posts || posts.length === 0" class="alert alert-info mt-4">
+        <p class="mb-0">No posts available.</p>
+    </div>
 </div>

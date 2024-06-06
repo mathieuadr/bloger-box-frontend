@@ -4,6 +4,8 @@ import { Category } from '../data/category';
 import { CategoryService } from '../data/services/category.service';
 import { hasLowerCase, hasNumeric, hasUpperCase } from '../validator/text-validator';
 import { PostService } from '../data/services/post.service';
+import Swal from 'sweetalert2';
+import { Post, PostCreateInput } from '../data/post';
 
 @Component({
   selector: 'app-add-post',
@@ -63,9 +65,51 @@ export class AddPostComponent implements OnInit{
   get title(){
     return this.form.controls['title']
   }
+  
+  Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
-  onSubmit(){
-    
+
+
+  
+  onSubmit() {
+    if (this.form.valid) {
+      const post: PostCreateInput = {
+        title: this.form.value.title!,
+        category: this.categories.find(cat => cat.id === this.form.value.category!)!,
+        content: this.form.value.content!,
+        created_date: new Date()
+      };
+      this.PostService.addPost(post).subscribe(
+        response => {
+          this.Toast.fire({
+            icon: 'success',
+            title: 'Publication réussie!',
+          });
+          this.form.reset();
+        },
+        error => {
+          this.Toast.fire({
+            icon: 'error',
+            title: 'Erreur!',
+          });
+        }
+      );
+    } else {
+      this.Toast.fire({
+        icon: 'error',
+        title: 'Formulaire invalide!',
+      });
+    }
   }
   
 }

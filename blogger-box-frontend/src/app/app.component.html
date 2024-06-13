@@ -1,14 +1,10 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div class="bg-dark">
-<app-top-bar></app-top-bar>
 
 
-  <router-outlet></router-outlet>
+
+<div class="bg-dark text-light min-vh-100 d-flex flex-column">
+  <app-top-bar></app-top-bar>
+
+  <div class="container py-4 flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -20,7 +20,7 @@ export class AddPostComponent implements OnInit{
     title: [
       '',
       {
-        validators: [Validators.required,Validators.minLength(8),Validators.maxLength(150)
+        validators: [Validators.required,Validators.minLength(5),Validators.maxLength(150)
         ],
         updateOn: 'blur',
       },

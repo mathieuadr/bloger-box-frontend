@@ -15,10 +15,10 @@ export class PostService{
     
     constructor(private http: HttpClient){}
         getAll(): Observable<Post[]> {
-            return this.http.get<Post[]>(this.PostUrl);
+            return this.http.get<Post[]>(this.PostUrl+"/GetALL");
             }
         addPost(Post : PostCreateInput): Observable<Post>{
-          return this.http.post<Post>(this.PostUrl,Post)
+          return this.http.post<Post>(this.PostUrl+"/Create",Post)
         }
 
     }
